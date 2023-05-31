@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Anonymous Function And Immediately Invoked Function Expressions (IIFE)</h1>
+    <script>
+       //a. Print odd numbers in an array
+       //Anonymous Function
+       let a = [1,2,3,4,5,6,7,8,9,10];
+        var odd = function (){
+            for(let i=0;i<a.length;i++){
+                if(a[i]%2!=0){
+                    console.log(a[i]);
+                }
+            }
+        };
+        odd(); 
+        //IIFE
+        (function (){
+            for(let i=0;i<a.length;i++){
+                if(a[i]%2!=0){
+                    console.log(a[i]);
+                }
+            }
+        })();
+
+
+        //b. Strings to title caps
+        ///Anonymous Function
+        let arr = ["hii", "hello", "how", "are"];
+        let capitalize =  function () {
+            return arr.map(word => {
+                const firstLetter = word.charAt(0).toUpperCase();
+                const rest = word.slice(1).toLowerCase();
+                return firstLetter + rest;
+            });
+        }
+        console.log(capitalize(arr));
+        //IIFE
+        ( function (arr1) {
+            return arr.map(word => {
+                const firstLetter = word.charAt(0).toUpperCase();
+                const rest = word.slice(1).toLowerCase();
+                console.log(firstLetter + rest);
+            });
+        })(["hii", "hello", "how", "are"]);
+
+
+        //c. Sum of all numbers in an array
+        //Anonymous Function
+        let res = 0;
+        var sum = function (b){
+            for(let i=0;i<b.length;i++){
+                res += b[i];
+            }
+            console.log(res);
+        };
+        sum([1,2,3,5,5,4]);
+        //IIFE
+        (function (b){
+        let res = 0;
+        for(let i=0;i<b.length;i++){
+            res += b[i];
+        }
+        console.log(res);
+        })([1,2,3,5,5,4]);
+
+
+        //d. Return prime numbers in an array
+        //Anonymous Function
+        var numArray = function (numArray) {
+        var result = numArray.filter((number) => {
+            for (var i = 2; i <= Math.sqrt(number); i++) {
+                if (number % i === 0) return false;
+            }
+            return true;
+        });
+            return result;
+        }
+        console.log(''+numArray([2, 3, 5, 7, 10, 12, 13, 15, 20]));
+
+
+        //e. Return all palindromes in an array
+        //Anonymous Function
+        let str = ["civic", "mam", "hello", "madam", "hii"];
+        var palindrome = function(){
+            for(let i=0;i<str.length;i++){
+                let strReverse = str[i].split("").reverse().join("");
+                if (str[i] === strReverse) {
+                    console.log(str[i]);
+                } 
+            }
+        }
+        palindrome();
+        //IIFE
+        (function(){
+            for(let i=0;i<str.length;i++){
+                let strReverse = str[i].split("").reverse().join("");
+                if (str[i] === strReverse) {
+                    console.log(str[i]);
+                } 
+            }
+        })();
+
+        
+        //f. Return median of two sorted arrays
+        //Anonymous Function
+        const arr1 = [1, 2];
+        const arr2 = [3, 4];
+        const median = function (a, b){
+            let c = [...a, ...b].sort((a, b) => a - b);
+            const half = c.length / 2 | 0;
+            if (c.length % 2) return c[half];
+            return (c[half] + c[half - 1]) / 2;
+        }
+        console.log(median(arr1, arr2));
+        //IIFE
+        (function (a, b){
+            let c = [...a, ...b].sort((a, b) => a - b);
+            const half = c.length / 2 | 0;
+            if (c.length % 2) return c[half];
+            console.log((c[half] + c[half - 1]) / 2);
+        })(arr1,arr2);
+
+
+        //g. Remove duplicates from an array
+        //Anonymous Function
+        let s = [1,2,3,5,5,8,8,9,1];
+        var duplicate = function (){
+            return [...new Set(s)];
+        }
+        console.log(duplicate(s));
+        //IIFE
+        (function (s){
+        let dup = [...new Set(s)];
+        console.log(dup);
+        })([1,2,3,5,5,8,8,9,1]);
+
+
+        //h. Rotate an array by k times
+        //Anonymous Function
+        const rotateArray1 = function(nums, k) {
+            for (let i = 0; i < k; i++) {
+                nums.unshift(nums.pop());
+            }
+            return nums;
+        }
+        console.log(rotateArray1([1,2,3,4,5], 3));
+        //IIFE
+        (function(nums, k) {
+            for (let i = 0; i < k; i++) {
+                nums.unshift(nums.pop());
+            }
+        console.log(nums);
+        })([1,2,3,4,5], 3);
+        
+    </script>
+</body>
+</html>
